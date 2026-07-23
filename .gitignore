@@ -1,0 +1,14 @@
+# 会話ログ（自動生成・コンテナ内保管用。公開リポジトリには含めない）
+logs/
+
+# 秘密・環境
+.env
+.env.*
+!.env.example
+
+# 依存・生成物
+vendor/
+storage/uploads/*
+storage/logs/*
+*.log
+node_modules/
