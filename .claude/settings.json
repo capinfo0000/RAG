@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/chatlog-record.js 2>/dev/null || /opt/node22/bin/node .claude/hooks/chatlog-record.js 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
