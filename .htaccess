@@ -1,0 +1,9 @@
+# 安全網: 本番の docroot は必ず public/ を指すこと。
+# 万一 docroot を demo/（このディレクトリ）に誤設定しても、
+# APIキー等を含む機密ファイルへの直接アクセスを拒否する。
+<FilesMatch "(^\.env|\.env\..*|\.bak$|composer\.(json|lock)$)">
+    Require all denied
+</FilesMatch>
+
+# storage/（ログ・アップロード実体）とドットファイルへの直アクセス拒否
+RedirectMatch 403 (?i)/(\.env|\.git|storage)(/|$)

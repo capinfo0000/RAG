@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>埋め込み型RAGチャットボット｜デモ</title>
+<style>
+  :root { --brand:#2563eb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif; color:#1f2937; line-height:1.75; }
+  header { display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid #eef0f3; }
+  header .logo { font-weight:800; font-size:19px; color:var(--brand); letter-spacing:.02em; }
+  header nav a { color:#6b7280; text-decoration:none; margin-left:22px; font-size:14px; }
+  .hero { background:linear-gradient(135deg,#2563eb,#0891b2); color:#fff; padding:84px 24px; text-align:center; }
+  .hero h1 { font-size:34px; margin:0 0 14px; font-weight:800; }
+  .hero p { font-size:16px; opacity:.96; max-width:680px; margin:0 auto; }
+  .hero .cta { display:inline-block; margin-top:26px; background:#fff; color:var(--brand); font-weight:700; padding:12px 22px; border-radius:10px; text-decoration:none; }
+  .wrap { max-width:1000px; margin:0 auto; padding:56px 24px; }
+  .lead { text-align:center; color:#6b7280; max-width:720px; margin:0 auto 40px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; }
+  .card { border:1px solid #eef0f3; border-radius:14px; padding:24px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .card .ico { font-size:26px; }
+  .card h3 { margin:10px 0 6px; font-size:17px; }
+  .card p { margin:0; color:#6b7280; font-size:14px; }
+  .note { margin-top:44px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:18px 22px; font-size:14px; color:#075985; text-align:center; }
+  footer { border-top:1px solid #eef0f3; padding:26px; text-align:center; color:#9ca3af; font-size:13px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">◆ RAG Chatbot</div>
+  <nav><a href="#features">特長</a><a href="#how">仕組み</a></nav>
+</header>
+
+<section class="hero">
+  <h1>サイトに1行、AIチャットを。</h1>
+  <p>登録した資料だけを根拠に、出典付き・推測なしで答える「埋め込み型RAGチャットボット」。このページ自体にもデモとして埋め込まれています。</p>
+</section>
+
+<div class="wrap">
+  <p class="lead" id="features">以下はこの製品の特長です。</p>
+  <div class="cards">
+    <div class="card"><div class="ico">🔎</div><h3>資料を検索して回答</h3><p>意味（ベクトル）×語（キーワード）のハイブリッド検索で関連箇所を抽出し、その内容だけを根拠に生成します。</p></div>
+    <div class="card"><div class="ico">📎</div><h3>出典つき・推測なし</h3><p>回答には出典[1][2]を明示。登録資料に無いことは「見当たりません」と正直に答えます。</p></div>
+    <div class="card"><div class="ico">🧩</div><h3>1行で設置</h3><p>既存サイトに &lt;script&gt; を1行貼るだけ。サイトのCSS/JSと干渉しません。</p></div>
+    <div class="card" id="how"><div class="ico">🔄</div><h3>更新が簡単</h3><p>資料を追加・同期すれば即反映。再学習は不要です。</p></div>
+  </div>
+</div>
+
+<footer>© RAG Chatbot — 埋め込み型RAGチャットボット デモ</footer>
+
+<!-- ▼ 埋め込みタグ（顧客が自社サイトに貼る1行と同じもの） ▼ -->
+<script src="embed.js" data-title="サポートAI" data-color="#2563eb" data-open="1"></script>
+</body>
+</html>

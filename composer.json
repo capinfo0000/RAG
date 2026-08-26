@@ -1,0 +1,25 @@
+{
+    "name": "capinfo/rag-chatbot-demo",
+    "description": "PHP-based RAG Chatbot Demo for client proposal",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "guzzlehttp/guzzle": "^7.8",
+        "vlucas/phpdotenv": "^5.6",
+        "smalot/pdfparser": "^2.10",
+        "phpoffice/phpspreadsheet": "^2.3",
+        "phpoffice/phpword": "^1.4",
+        "league/commonmark": "^2.5",
+        "ramsey/uuid": "^4.7",
+        "monolog/monolog": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

@@ -1,0 +1,320 @@
+/* ============================================================
+   RAG Chatbot Demo — チャット画面スタイル
+   Tailwind CDN と併用、補完的なスタイルだけ定義
+   ============================================================ */
+
+/* ---------- メッセージ行 ---------- */
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.user-message {
+  flex-direction: row-reverse;
+}
+.user-message .bubble {
+  background-color: #2563eb;
+  color: #fff;
+  border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+}
+.bot-message .bubble {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+}
+
+/* ---------- バブル本体 ---------- */
+.bubble {
+  max-width: 88%;
+  padding: 0.55rem 0.85rem;
+  word-wrap: break-word;
+  /* pre-wrap は付けない: HTMLソースのインデント空白がバブル内に可視描画され膨張する。
+     段落改行は <p> / markdown 側で扱う。ユーザー手入力の改行はrenderMarkdownでHTML化される */
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+/* 素の <p>（ウェルカム等）のブラウザ既定マージン除去 */
+.bubble > p {
+  margin: 0;
+}
+
+/* ---------- アバター ---------- */
+.avatar {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+.bot-avatar {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+}
+.user-avatar {
+  background: #6b7280;
+  font-size: 0.625rem;
+}
+
+/* ---------- Markdown 領域 ---------- */
+.markdown p { margin: 0 0 0.5rem 0; }
+.markdown p:last-child { margin-bottom: 0; }
+.markdown ul, .markdown ol { margin: 0.25rem 0 0.5rem 1.25rem; }
+.markdown li { margin: 0.125rem 0; }
+.markdown code {
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 0.1em 0.3em;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+}
+.markdown pre {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+.markdown pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+.markdown strong { font-weight: 700; }
+.markdown a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.markdown table {
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+.markdown th, .markdown td {
+  border: 1px solid #d1d5db;
+  padding: 0.35rem 0.6rem;
+}
+
+/* インライン引用ホバー */
+.markdown .cite-ref {
+  display: inline-block;
+  background-color: rgba(37, 99, 235, 0.15);
+  color: #1d4ed8;
+  font-size: 0.75em;
+  padding: 0.05em 0.4em;
+  border-radius: 9999px;
+  margin: 0 0.1em;
+  cursor: help;
+  vertical-align: middle;
+  font-weight: 600;
+}
+.user-message .markdown .cite-ref {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ---------- 引用パネル ---------- */
+.citations {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+.cite-title {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.35rem;
+}
+.cite-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.4rem;
+  margin-top: 0.25rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+}
+.cite-item summary {
+  cursor: pointer;
+  color: #1e3a8a;
+  font-weight: 500;
+}
+.cite-excerpt {
+  margin-top: 0.35rem;
+  color: #4b5563;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+}
+
+/* ---------- Quick reply ---------- */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 3rem;
+}
+.quick-reply-btn {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.quick-reply-btn:hover {
+  background-color: #eff6ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+/* ---------- フィードバック（バブル内に統合） ---------- */
+.ai-disclaimer {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.4);
+}
+.feedback-area {
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+.feedback-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.feedback-row button {
+  background: rgba(0, 0, 0, 0.04);
+  border: none;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+}
+.feedback-row button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.feedback-row .resolved-btn {
+  background: rgba(34, 197, 94, 0.15);
+  color: #166534;
+  font-size: 0.75rem;
+}
+.feedback-row .resolved-btn:hover {
+  background: rgba(34, 197, 94, 0.25);
+}
+.feedback-row .unresolved-btn {
+  background: rgba(239, 68, 68, 0.12);
+  color: #991b1b;
+  font-size: 0.75rem;
+}
+.feedback-row .unresolved-btn:hover {
+  background: rgba(239, 68, 68, 0.22);
+}
+.feedback-thanks {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #16a34a;
+}
+
+/* ---------- アンケートパネル（バブル内にそのまま展開・別枠化しない） ---------- */
+[x-cloak] { display: none !important; }
+.survey-panel {
+  margin-top: 0.4rem;
+  max-width: 100%;
+}
+.survey-title {
+  font-size: 0.8rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.survey-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+.survey-chip {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.survey-chip:hover {
+  border-color: #93c5fd;
+}
+.survey-chip.is-selected {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+.survey-comment {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.82rem;
+  resize: vertical;
+  margin-bottom: 0.5rem;
+}
+.survey-comment:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3);
+}
+.survey-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+.survey-submit {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.survey-submit:hover { background: #1d4ed8; }
+.survey-cancel {
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.survey-cancel:hover { color: #374151; }
+
+/* ---------- Typing indicator ---------- */
+.typing-indicator {
+  display: inline-flex;
+  gap: 4px;
+  padding: 0.2rem 0;
+}
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background: #9ca3af;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ---------- スクロール ---------- */
+main::-webkit-scrollbar { width: 8px; }
+main::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.15); border-radius: 4px; }
